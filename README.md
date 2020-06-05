@@ -10,3 +10,17 @@
           }
 
      }
+     
+     
+     
+### 指向某個位置
+     server {
+          listen 80;
+          server_name aaaa.bbbbb.com;
+
+          location / {
+               root /home/test/;
+          }
+
+     }
+     
