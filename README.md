@@ -46,6 +46,8 @@
 
 
 ### wss ws 同 port
+https://www.nginx.com/blog/running-non-ssl-protocols-over-ssl-port-nginx-1-15-2/
+
 	stream {
 	    upstream wss {
 		server 127.0.0.1:9997;
