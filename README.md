@@ -34,6 +34,8 @@
          }
      }
      
+     
+     
 ### nginx 301導向
      location / {
         proxy_set_header X-Real-IP $remote_addr;
@@ -42,4 +44,26 @@
         return 301 http://127.0.0.1$request_uri;
       }
 
+
+### wss ws 同 port
+	stream {
+	    upstream wss {
+		server 127.0.0.1:9997;
+	    }
+
+	    upstream ws {
+		server 127.0.0.1:9998;
+	    }
+
+	    map $ssl_preread_protocol $upstream {
+		default wss;
+		"" ws;
+	    }
+
+	    server {
+		listen 9999;
+		proxy_pass $upstream;
+		ssl_preread on;
+	    }
+	}
      
